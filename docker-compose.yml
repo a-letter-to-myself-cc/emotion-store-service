@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  emotion-db:
+    image: postgres:15
+    container_name: postgres-emotion-store
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "55432:5432"  # 로컬 포트 변경 가능
+    volumes:
+      - postgres_store_data:/var/lib/postgresql/data
+
+  emotion-store:
+    build: .
+    container_name: django-emotion-store
+    command: python manage.py runserver 0.0.0.0:8009
+    volumes:
+      - .:/app
+    ports:
+      - "8009:8009"
+    env_file:
+      - .env
+    depends_on:
+      - emotion-db
+
+volumes:
+  postgres_store_data:
