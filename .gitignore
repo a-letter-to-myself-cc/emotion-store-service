@@ -1,0 +1,28 @@
+# Python 관련
+__pycache__/
+*.py[cod]
+*.sqlite3
+
+# 가상환경
+venv/
+env/
+.venv
+
+# IDE 설정
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# 환경변수
+.env
+
+*.log
+
+# media 파일
+media/
+staticfiles/
+
+# GCP 버킷 key
+gcs-key.json
