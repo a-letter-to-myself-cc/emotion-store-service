@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'emotion_store_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'emotion_store',
-        'USER': 'emotion_user',
-        'PASSWORD': '0718',
-        'HOST': '34.47.90.156',
-        'PORT': '5432',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
 # DATABASES = {
