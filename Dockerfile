@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y gcc libpq-dev
 # 4. requirements.txt 복사 및 설치
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get update && apt-get install -y libpq-dev gcc
+
 
 # 5. 전체 프로젝트 복사
 COPY . .
